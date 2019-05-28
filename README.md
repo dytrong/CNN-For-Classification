@@ -4,17 +4,17 @@
 
 安装pytorch 
 
-conda install pytorch-nightly -c pytorch
+    conda install pytorch-nightly -c pytorch
 
 
-(1) cd pytorch_model, 训练分类网络模型,模型参数保存在model文件夹中,
-    data文件夹为分类数据集,里面包含n个子文件夹,每个子文件代表一个类别.
+(1) cd pytorch_model, 新建文件夹data, model. 训练分类网络模型,模型参数保存在model文件夹中,data文件夹为分类数据集,里面包含n个子文件夹,
+    每个子文件代表一个类别. 训练网络,保存模型参数.
+    
+    python network.py 
 
-    python network.py 训练网络
+(2) cd ../cpp, 新建文件夹cpp_model, imgs. 主要把python训练好的模型转化成c++能够调用
 
-(2) cd ../cpp 主要把python训练好的模型转化成c++能够调用
-
-cl_model.py 这个函数就是把python训练好的模型转化为c++能够调用,模型参数保存在cpp_model中,然后example-app.cpp调用.
+    cl_model.py 这个函数就是把python训练好的模型转化为c++能够调用,模型参数保存在cpp_model中,然后example-app.cpp调用.
 
 (3) 运行c++程序具体步骤,采用cmake编译
 
