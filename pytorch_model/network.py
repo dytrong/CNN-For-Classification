@@ -55,7 +55,7 @@ class AlexNet(nn.Module):
 def alexnet(pretrained=False,**kwargs):
     model=AlexNet(**kwargs)
     if pretrained:
-        model.load_state_dict(torch.load('./model/alenet_model_para.pkl'))
+        model.load_state_dict(torch.load('./model/alexnet_model_para.pkl'))
     return model
 
 model = AlexNet().cuda(device)
@@ -108,7 +108,7 @@ def train(epoch):
     
     epoch_acc=train_corrects/len(train_load.dataset)
     
-    torch.save(model.state_dict(),'./model/alenet_model_para.pkl')
+    torch.save(model.state_dict(),'./model/alexnet_model_para.pkl')
     
     print('The {} epoch result: Average loss: {:.6f},Accuracy:{}/{} ({:.2f}%)\n'.
             format(epoch,epoch_loss,train_corrects,len(train_load.dataset),100.*float(train_corrects)/float(len(train_load.dataset))))
