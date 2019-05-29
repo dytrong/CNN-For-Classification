@@ -61,8 +61,11 @@ def alexnet(pretrained=False,**kwargs):
 model = AlexNet().cuda(device)
 #print(model)
 train_load,train_data=load_data('./data/')
+
 optimizer = torch.optim.SGD(model.parameters(), lr = 0.001, momentum=0.9,dampening=0,weight_decay=0.0001)
+
 loss_func = torch.nn.CrossEntropyLoss()
+
 train_epoch=100
 
 def train(epoch):  
@@ -102,8 +105,11 @@ def train(epoch):
     #计算总的loss和预测正确的个数
     ####计算平均loss和accuracy
     epoch_loss=train_loss/len(train_load.dataset)
+    
     epoch_acc=train_corrects/len(train_load.dataset)
-    torch.save(model.state_dict(),'alenet_model_para.pkl')
+    
+    torch.save(model.state_dict(),'./model/alenet_model_para.pkl')
+    
     print('The {} epoch result: Average loss: {:.6f},Accuracy:{}/{} ({:.2f}%)\n'.
             format(epoch,epoch_loss,train_corrects,len(train_load.dataset),100.*float(train_corrects)/float(len(train_load.dataset))))
 
